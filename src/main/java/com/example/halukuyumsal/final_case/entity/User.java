@@ -1,5 +1,6 @@
 package com.example.halukuyumsal.final_case.entity;
 
+import com.example.halukuyumsal.final_case.general.BaseEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,7 +13,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
-public class User {
+public class User extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "User")
     @SequenceGenerator(name = "User", sequenceName = "USER_ID_SEQ")
     @Id
