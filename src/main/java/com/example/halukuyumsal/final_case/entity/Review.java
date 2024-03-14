@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -24,11 +25,8 @@ public class Review {
     @Column(name = "COMMENT", length = 30, nullable = false)
     private EnumComment enumComment;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne
-    @JoinColumn(name = "restaurant_id")
-    private Restaurant restaurant;
 }

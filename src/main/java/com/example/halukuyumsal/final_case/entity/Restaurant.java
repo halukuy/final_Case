@@ -1,6 +1,5 @@
 package com.example.halukuyumsal.final_case.entity;
 
-import com.example.halukuyumsal.final_case.general.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.solr.core.mapping.Indexed;
@@ -10,8 +9,8 @@ import javax.persistence.Id;
 
 @Getter
 @Setter
-@SolrDocument(collection = "restaurant")
-public class Restaurant extends BaseEntity {
+@SolrDocument(collection = "restaurants")
+public class Restaurant {
     @Id
     @Indexed(name = "id", type = "string")
     private String id;
@@ -21,4 +20,10 @@ public class Restaurant extends BaseEntity {
 
     @Indexed(name = "distance", type = "pdouble")
     private double distance;
+
+    @Indexed(name = "distance", type = "pdouble")
+    private double latitude;
+
+    @Indexed(name = "distance", type = "pdouble")
+    private double longitude;
 }

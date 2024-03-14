@@ -14,6 +14,5 @@ public class ReviewDTO {
     private Long id;
     private EnumComment enumComment;
     private Long userId;
-    private String restaurantId;
 
 }
