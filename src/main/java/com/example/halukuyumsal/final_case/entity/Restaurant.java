@@ -9,7 +9,7 @@ import javax.persistence.Id;
 
 @Getter
 @Setter
-@SolrDocument(collection = "restaurants")
+@SolrDocument(solrCoreName = "final_Case")
 public class Restaurant {
     @Id
     @Indexed(name = "id", type = "string")
@@ -26,4 +26,7 @@ public class Restaurant {
 
     @Indexed(name = "distance", type = "pdouble")
     private double longitude;
+
+    @Indexed(name = "rating", type = "pdouble")
+    private double rating;
 }

@@ -14,5 +14,7 @@ public class UserDTO {
     private String username;
     private String firstName;
     private String lastName;
+    private Long latitude;
+    private Long longitude;
 
 }
