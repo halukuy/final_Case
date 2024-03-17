@@ -8,11 +8,11 @@ The project offers functionalities such as searching for restaurants, posting re
 
 ## Class Diagram
 
-![Class Diagram](Screenshot_2024-03-17_143750.png)
+![Class Diagram](/Screenshot_2024-03-17_143750.png)
 
 ## Swagger Page
 
-![Swagger Page](Screenshot_2024-03-16_205755.png)
+![Swagger Page](/Screenshot_2024-03-16_205755.png)
 
 ## Project Structure
 
