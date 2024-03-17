@@ -1,6 +1,6 @@
 package com.example.halukuyumsal.final_case.controller;
 
-import com.example.halukuyumsal.final_case.entity.Restaurant;
+import com.example.halukuyumsal.final_case.dto.RestaurantDTO;
 import com.example.halukuyumsal.final_case.service.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,7 +13,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/restaurants")
 public class RestaurantController {
-
+    @Autowired
     private final RestaurantService restaurantService;
 
     @Autowired
@@ -22,26 +22,23 @@ public class RestaurantController {
     }
 
     @PostMapping
-    public ResponseEntity<Restaurant> createRestaurant(@RequestBody Restaurant restaurant) {
-        Restaurant savedRestaurant = restaurantService.saveRestaurant(restaurant);
-        return new ResponseEntity<>(savedRestaurant, HttpStatus.CREATED);
+    public ResponseEntity<RestaurantDTO> createRestaurant(@RequestBody RestaurantDTO restaurantDTO) {
+        RestaurantDTO savedRestaurantDTO = restaurantService.saveRestaurant(restaurantDTO);
+        return new ResponseEntity<>(savedRestaurantDTO, HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Restaurant> getRestaurant(@PathVariable String id) {
-        Optional<Restaurant> restaurant = restaurantService.getRestaurant(id);
-        if (restaurant.isPresent()) {
-            return new ResponseEntity<>(restaurant.get(), HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+    public ResponseEntity<RestaurantDTO> getRestaurant(@PathVariable String id) {
+        Optional<RestaurantDTO> restaurantDTO = restaurantService.getRestaurant(id);
+        return restaurantDTO.map(dto -> new ResponseEntity<>(dto, HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Restaurant> updateRestaurant(@PathVariable String id, @RequestBody Restaurant restaurant) {
-        restaurant.setId(id);
-        Restaurant updatedRestaurant = restaurantService.updateRestaurant(restaurant);
-        return new ResponseEntity<>(updatedRestaurant, HttpStatus.OK);
+    public ResponseEntity<RestaurantDTO> updateRestaurant(@PathVariable String id, @RequestBody RestaurantDTO restaurantDTO) {
+        restaurantDTO.setId(id);
+        RestaurantDTO updatedRestaurantDTO = restaurantService.updateRestaurant(restaurantDTO);
+        return new ResponseEntity<>(updatedRestaurantDTO, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
@@ -50,9 +47,9 @@ public class RestaurantController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-
     @GetMapping("/recommendations")
-    public List<Restaurant> getRecommendations(@RequestParam double userLat, @RequestParam double userLon) {
-        return restaurantService.recommendRestaurants(userLat, userLon);
+    public ResponseEntity<List<RestaurantDTO>> getRecommendations(@RequestParam double userLat, @RequestParam double userLon) {
+        List<RestaurantDTO> recommendations = restaurantService.recommendRestaurants(userLat, userLon);
+        return new ResponseEntity<>(recommendations, HttpStatus.OK);
     }
 }
