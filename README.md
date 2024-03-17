@@ -8,7 +8,7 @@ The project offers functionalities such as searching for restaurants, posting re
 
 ## Class Diagram
 
-![Uploading Screenshot 2024-03-17 145900.png…]()
+![Screenshot 2024-03-17 145900](https://github.com/halukuy/final_Case/assets/81950240/219222f4-56d8-4d0c-893c-b7eb9ef37c2c)
 ## Swagger Page
 
 ![Swagger Page](Screenshot 2024-03-17 143750.png)
