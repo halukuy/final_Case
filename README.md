@@ -8,10 +8,10 @@ The project offers functionalities such as searching for restaurants, posting re
 
 ## Class Diagram
 
-![](Screenshot 2024-03-16 205755.png)
+![Class Diagram](Screenshot 2024-03-16 205755.png)
 ## Swagger Page
 
-![](Screenshot 2024-03-17 143750.png)
+![Swagger Page](Screenshot 2024-03-17 143750.png)
 ## Project Structure
 
 The project includes the following main packages and classes:
